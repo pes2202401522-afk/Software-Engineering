@@ -11,6 +11,7 @@ def subtract(a, b):
     """Subtract b from a"""
     return a - b
 
+
 def multiply(a, b):
     """Multiply two numbers with input validation and logging."""
     if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
@@ -32,6 +33,22 @@ def divide(a, b):
     result = a / b
     print(f"Result: {result}")
     return result
+
+def power(base, exponent):
+    """Raise base to the power of exponent"""
+    if not isinstance(base, (int, float)) or not isinstance(exponent, (int, float)):
+        raise TypeError("Both arguments must be numbers")
+    if exponent < 0:
+        raise ValueError("Negative exponents are not supported in this implementation")
+    return base ** exponent
+
+def square_root(number):
+    """Calculate the square root of a number"""
+    if not isinstance(number, (int, float)):
+        raise TypeError("Argument must be a number")
+    if number < 0:
+        raise ValueError("Cannot calculate square root of a negative number")
+    return number ** 0.5
 
 # TODO: Students will add multiply, divide, power, sqrt functions
 

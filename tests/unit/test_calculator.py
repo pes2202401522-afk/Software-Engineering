@@ -3,7 +3,7 @@ Unit Tests for Calculator
 Students start with 2 passing tests, then add more
 """
 import pytest
-from src.calculator import add, divide, subtract, multiply
+from src.calculator import add, divide, subtract, multiply, power, square_root
 
 class TestBasicOperations:
     """Test basic arithmetic operations"""
@@ -76,3 +76,51 @@ class TestMultiplyDivideValidation:
         """Test that dividing by zero raises a ValueError."""
         with pytest.raises(ValueError, match="Cannot divide"):
             divide(10, 0)
+
+class TestPowerSquareRoot:
+    """Test power and square root operations"""
+
+    def test_power_positive_numbers(self):
+        """Test power with positive numbers"""
+        assert power(2, 3) == 8  # 2^3 = 8
+        assert power(5, 2) == 25  # 5^2 = 25
+
+    def test_power_zero_exponent(self):
+        """Test power with zero exponent"""
+        assert power(5, 0) == 1
+        assert power(10, 0) == 1
+
+    def test_power_negative_base(self):
+        """Test power with negative base and positive exponent"""
+        assert power(-2, 2) == 4  # (-2)^2 = 4
+
+    def test_power_validation(self):
+        """Test power rejects non-numeric inputs"""
+        with pytest.raises(TypeError, match="Both arguments must be numbers"):
+            power("2", 3)
+        with pytest.raises(TypeError, match="Both arguments must be numbers"):
+            power(2, "3")
+
+    def test_power_negative_exponent(self):
+        """Test power raises ValueError for negative exponent"""
+        with pytest.raises(ValueError, match="Negative exponents are not supported"):
+            power(2, -1)
+
+    def test_square_root_positive_numbers(self):
+        """Test square root with positive numbers"""
+        assert square_root(4) == 2.0
+        assert square_root(16) == 4.0
+
+    def test_square_root_zero(self):
+        """Test square root of zero"""
+        assert square_root(0) == 0.0
+
+    def test_square_root_validation(self):
+        """Test square root rejects non-numeric inputs"""
+        with pytest.raises(TypeError, match="Argument must be a number"):
+            square_root("4")
+
+    def test_square_root_negative_number(self):
+        """Test square root raises ValueError for negative number"""
+        with pytest.raises(ValueError, match="Cannot calculate square root of a negative number"):
+            square_root(-4)
