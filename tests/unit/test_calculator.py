@@ -82,8 +82,8 @@ class TestPowerSquareRoot:
 
     def test_power_positive_numbers(self):
         """Test power with positive numbers"""
-        assert power(2, 3) == 8  # 2^3 = 8
-        assert power(5, 2) == 25  # 5^2 = 25
+        assert power(2, 3) == 8
+        assert power(5, 2) == 25
 
     def test_power_zero_exponent(self):
         """Test power with zero exponent"""
@@ -92,7 +92,7 @@ class TestPowerSquareRoot:
 
     def test_power_negative_base(self):
         """Test power with negative base and positive exponent"""
-        assert power(-2, 2) == 4  # (-2)^2 = 4
+        assert power(-2, 2) == 4
 
     def test_power_validation(self):
         """Test power rejects non-numeric inputs"""
